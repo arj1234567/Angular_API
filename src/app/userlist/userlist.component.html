@@ -1,0 +1,26 @@
+<div class="container">
+  <h3 class="text-center">USERLIST</h3>
+  <div>
+    <table class=" table table-bordered">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th> Full Name</th>
+        <th>Email</th>
+        <th>Password</th>
+      </tr>
+    </thead>
+      <tbody>
+      <tr *ngFor="let user of user">
+        <td>{{user.id}}</td>
+        <td>{{user.Full_name}}</td>
+        <td>{{user.Email}}</td>
+        <td>{{user.Password}}</td>
+        <td><a class="btn btn-primary" routerLink="/userdetails" [queryParams]="{id:user.id}">Edit</a></td>
+        <td><a class="btn btn-danger" (click)="deleteUser(user.id)">Delete</a></td>
+
+      </tr>
+    </tbody>
+    </table>
+  </div>
+  </div>

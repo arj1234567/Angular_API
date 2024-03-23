@@ -1,0 +1,54 @@
+<form (ngSubmit)="modifyUser()">
+  <div class="head" style="padding-top: 50px; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+    <div class="row">
+      <h1 class="text-center  text-danger">UPDATE USER</h1>
+    </div>
+  </div>
+  <div class="container" style="padding-left: 400px; padding-top:60px;font-weight:bolder">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="id" class="text-primary">Id</label>
+        <input type="text" name="id" class="form-control" required #uid="ngModel" [(ngModel)]="user.id">
+        <div *ngIf="uid.invalid && (uid.touched || uid.dirty)">
+          <strong *ngIf="uid.errors?.['required']" class="text-danger">Id is mandatory</strong>
+        </div>
+      </div>
+      <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="name" class="text-primary">Name</label>
+        <input type="text" name="Full_name" class="form-control" required minlength="2" maxlength="10" #uname="ngModel" [(ngModel)]="user.Full_name">
+        <div *ngIf="uname.invalid && (uname.touched || uname.dirty)"></div>
+          <strong *ngIf="uname.errors?.['required']" class="text-danger">Name is mandatory</strong>
+          <strong *ngIf="uname.errors?.['minlength']" class="text-danger">Name must have minimum length</strong>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="email" class="text-primary">E-mail</label>
+        <input type="text" name="Email" class="form-control" required email="" #uemail="ngModel" [(ngModel)]="user.Email">
+        <div *ngIf="uemail.invalid && (uemail.touched || uemail.dirty)">
+          <strong *ngIf="uemail.errors?.['required']" class="text-danger">Email is mandatory</strong>
+          <strong *ngIf="uemail.errors?.['email']" class="text-danger">Email is invalid</strong>
+        </div>
+        <div *ngIf="uemail.valid && (uemail.touched || uemail.pristine)">
+          <strong class="text-danger">Email is valid</strong>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="password" class="text-primary">Password</label>
+        <input type="text" name="Password" class="form-control"required #upassword="ngModel" [(ngModel)]="user.Password">
+        <div *ngIf="upassword.invalid && (upassword.touched || upassword.dirty)">
+          <strong *ngIf="upassword.errors?.['required']" class="text-danger">password is mandatory</strong>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="padding-top: 10px;padding-left:200px">
+      <div class="col-md-6 col-sm-12">
+        <input type="submit" value="Update"  class="btn btn-outline-primary">
+      </div>
+    </div>
+  </div>
+  </div>
+  </form>
